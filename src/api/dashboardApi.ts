@@ -3,8 +3,6 @@ import type { DashboardStats,Period } from "@/types/dashboard";
 import type { ApiResponse } from "@/types/api";
 
 
-
-
 export const getDashboardStats  = async (period : Period ) : Promise<DashboardStats> => {
     const res = await api.get<ApiResponse<DashboardStats>>('/dashboard', {
         params : {period}
