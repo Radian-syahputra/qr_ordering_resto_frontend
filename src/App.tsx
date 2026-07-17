@@ -1,13 +1,15 @@
-import { Button } from "./components/ui/button"
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import AppRoutes from './AppRoutes'
+
+
+const queryClient = new QueryClient()
 
 const App = () => {
-  console.log(import.meta.env.VITE_API_BASE_URL)
   return (
-    <div className='text-red-500'>
-      Hallo
-      <Button>Test</Button>
-    </div>
+    <QueryClientProvider client={queryClient}>
+     <AppRoutes/>
+    </QueryClientProvider>
   )
 }
 
-export default App 
+export default App
