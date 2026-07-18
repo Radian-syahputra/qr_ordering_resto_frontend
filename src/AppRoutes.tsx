@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
 import { Spinner } from "./components/ui/spinner";
+import { Toaster } from "./components/ui/sonner";
 
 // Customer
 import MenuPage from "./pages/customer/MenuPage";
@@ -22,10 +23,11 @@ const AppRoutes = () => {
   const { isLoading } = useAuth();
 
   if (isLoading) {
-    return <Spinner className="size-8 flex justify-center items-center" />;
+    return <Spinner className="size-8 flex justify-center items-center min-h-screen" />;
   }
   return (
     <>
+      <Toaster/>
       <BrowserRouter>
         <Routes>
           {/* Custumer */}
