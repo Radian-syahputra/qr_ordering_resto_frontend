@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
-import { Spinner } from "./components/ui/spinner";
-import { Toaster } from "./components/ui/sonner";
+import { Spinner } from "@/components/ui/spinner";
+import { Toaster } from "@/components/ui/sonner";
 
 // Customer
 import MenuPage from "./pages/customer/MenuPage";
@@ -18,8 +18,8 @@ import MenuManagePage from "./pages/staff/MenuManagePage";
 import OrderManagePage from "./pages/staff/OrderManagePage";
 import TableManagePage from "./pages/staff/TableManagePage";
 
-import ProtectedRoute from "./components/ProtectedRoute";
-import GuestRoute from "./components/GuestRoute";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import GuestRoute from "@/components/GuestRoute";
 
 const AppRoutes = () => {
   const { isLoading } = useAuth();
