@@ -17,22 +17,24 @@ import RegisterPage from "./pages/staff/RegisterPage";
 import MenuManagePage from "./pages/staff/MenuManagePage";
 import OrderManagePage from "./pages/staff/OrderManagePage";
 import TableManagePage from "./pages/staff/TableManagePage";
+
 import ProtectedRoute from "./components/ProtectedRoute";
+import GuestRoute from "./components/GuestRoute";
 
 const AppRoutes = () => {
   const { isLoading } = useAuth();
 
- if (isLoading) {
+  if (isLoading) {
     return (
-        <div className="flex min-h-screen items-center justify-center">
-            <Spinner className="size-8" />
-        </div>
-    )
-}
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner className="size-8" />
+      </div>
+    );
+  }
 
   return (
     <>
-      <Toaster/>
+      <Toaster />
       <BrowserRouter>
         <Routes>
           {/* Custumer */}
@@ -50,8 +52,10 @@ const AppRoutes = () => {
             <Route path="/admin/table" element={<TableManagePage />} />
           </Route>
 
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route element={<GuestRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
