@@ -22,9 +22,14 @@ import ProtectedRoute from "./components/ProtectedRoute";
 const AppRoutes = () => {
   const { isLoading } = useAuth();
 
-  if (isLoading) {
-    return <Spinner className="size-8 flex justify-center items-center min-h-screen" />;
-  }
+ if (isLoading) {
+    return (
+        <div className="flex min-h-screen items-center justify-center">
+            <Spinner className="size-8" />
+        </div>
+    )
+}
+
   return (
     <>
       <Toaster/>

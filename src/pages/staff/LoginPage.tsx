@@ -10,12 +10,7 @@ import { useAuthStore } from "@/store/authStore";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Field,
-  FieldContent,
-  FieldError,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const LoginPage = () => {
@@ -30,7 +25,8 @@ const LoginPage = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      setUser(data), toast.success("Login Berhasil");
+      setUser(data);
+      toast.success("Login Berhasil");
       navigate("/admin/dashboard");
     },
     onError: () => {
