@@ -13,6 +13,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const MenuPage = () => {
   const [search, setSearch] = useState("");
@@ -42,7 +43,8 @@ const MenuPage = () => {
         value={category ?? "all"}
         onValueChange={(value) =>
           setCategory(value === "all" ? undefined : value ?? undefined)
-        }>
+        } 
+        disabled={categoriesLoading}>
         <SelectTrigger>
           <SelectValue placeholder="Semua Kategori">
             {(value: string) => {
@@ -64,9 +66,15 @@ const MenuPage = () => {
           ))}
         </SelectContent>
       </Select>
-      {menus?.map((menu) => (
-        <MenuCard menu={menu} key={menu.id} />
-      ))}
+
+      {menusLoading ? (
+        <>
+          <Skeleton className="h-64 rounded-lg" />
+          <Skeleton className="h-64 rounded-lg" />
+        </>
+      ) : (
+        menus?.map((menu) => <MenuCard key={menu.id} menu={menu} />)
+      )}
     </div>
   );
 };
