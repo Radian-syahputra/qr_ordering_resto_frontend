@@ -14,6 +14,8 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const MenuPage = () => {
   const [search, setSearch] = useState("");
@@ -39,11 +41,14 @@ const MenuPage = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <Link to="/cart">
+        <Button variant="outline">Lihat Cart</Button>
+      </Link>
       <Select
         value={category ?? "all"}
         onValueChange={(value) =>
           setCategory(value === "all" ? undefined : value ?? undefined)
-        } 
+        }
         disabled={categoriesLoading}>
         <SelectTrigger>
           <SelectValue placeholder="Semua Kategori">
