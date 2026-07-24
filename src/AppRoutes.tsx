@@ -20,6 +20,7 @@ import TableManagePage from "./pages/staff/TableManagePage";
 
 import ProtectedRoute from "@/components/ProtectedRoute";
 import GuestRoute from "@/components/GuestRoute";
+import StaffLayout from "@/components/StaffLayout";
 
 const AppRoutes = () => {
   const { isLoading } = useAuth();
@@ -45,11 +46,13 @@ const AppRoutes = () => {
 
           {/* Staff */}
           <Route element={<ProtectedRoute />}>
+            <Route element={<StaffLayout/>}>
             <Route path="/admin/category" element={<CategoryPage />} />
             <Route path="/admin/dashboard" element={<DashboardPage />} />
             <Route path="/admin/menu" element={<MenuManagePage />} />
             <Route path="/admin/order" element={<OrderManagePage />} />
             <Route path="/admin/table" element={<TableManagePage />} />
+            </Route>
           </Route>
 
           <Route element={<GuestRoute />}>
